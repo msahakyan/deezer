@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<coders.android.msahakyan.deezer.ui.common.lanes.view.HeaderLaneView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rootLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardBackgroundColor="@color/transparent"
+    app:cardCornerRadius="5dp"
+    app:cardElevation="0dp">
+    
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        
+        <TextView
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:background="@color/colorAccent"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:text="HEADER-LANE"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</coders.android.msahakyan.deezer.ui.common.lanes.view.HeaderLaneView>

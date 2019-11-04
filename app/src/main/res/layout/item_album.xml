@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/clip_item_container"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/list_item_height"
+    android:layout_marginStart="@dimen/list_item_margin"
+    android:layout_marginTop="@dimen/list_item_margin"
+    android:layout_marginEnd="@dimen/list_item_margin"
+    app:cardBackgroundColor="#000"
+    app:cardCornerRadius="2dp"
+    app:cardElevation="0dp">
+    
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        
+        <ImageView
+            android:id="@+id/album_cover"
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription"
+            tools:srcCompat="@tools:sample/backgrounds/scenic[14]" />
+        
+        <TextView
+            android:id="@+id/album_title"
+            style="@style/AppTheme.HeadBold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxLines="1"
+            android:padding="5dp"
+            app:layout_constraintTop_toBottomOf="@id/album_cover"
+            tools:text="Deezer" />
+        
+        <TextView
+            android:id="@+id/album_tracks_number"
+            style="@style/AppTheme.Footnote"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:layout_marginEnd="6dp"
+            android:layout_marginBottom="6dp"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxLines="1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="12 tracks" />
+        
+        <ImageView
+            android:id="@+id/artist_avatar"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:layout_marginEnd="6dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="@id/album_tracks_number"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/album_tracks_number"
+            tools:ignore="ContentDescription"
+            tools:srcCompat="@tools:sample/avatars[2]" />
+    
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>
