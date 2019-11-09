@@ -18,21 +18,21 @@ import retrofit2.http.Query
 
 interface SearchApi {
 
-    @GET("/search/album")
+    @GET("search/album")
     suspend fun searchAlbums(@Query("q") q: String): PageData<Album>
 
     @GET("search/artist")
-    fun searchArtists(@Query("q") q: String): PageData<Artist>
+    suspend fun searchArtists(@Query("q") q: String): PageData<Artist>
 
     @GET("search/playlist")
-    fun searchPlaylist(@Query("q") q: String): PageData<Playlist>
+    suspend fun searchPlaylist(@Query("q") q: String): PageData<Playlist>
 
     @GET("search/track")
-    fun searchTracks(@Query("q") q: String): PageData<Track>
+    suspend fun searchTracks(@Query("q") q: String): PageData<Track>
 
     @GET("search/radio")
-    fun searchRadios(@Query("q") q: String): PageData<Radio>
+    suspend fun searchRadios(@Query("q") q: String): PageData<Radio>
 
     @GET("search/user")
-    fun searchUsers(@Query("q") q: String): PageData<User>
+    suspend fun searchUsers(@Query("q") q: String): PageData<User>
 }

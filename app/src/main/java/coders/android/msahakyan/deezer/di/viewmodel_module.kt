@@ -11,7 +11,7 @@ import org.koin.dsl.module
 
 val viewModelsModule = module {
 
-    viewModel { HomeViewModel(searchRepository = get()) }
+    viewModel { HomeViewModel(searchRepository = get(), genreRepository = get()) }
 
     // Experimental
     viewModel { SearchViewModel(searchRepository = get()) }

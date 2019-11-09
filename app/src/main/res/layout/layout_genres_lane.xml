@@ -11,7 +11,8 @@
     
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_margin="5dp">
         
         <TextView
             android:layout_width="300dp"
@@ -19,7 +20,7 @@
             android:background="#ccdef789"
             android:gravity="center"
             android:textStyle="bold"
-            android:text="GENRE-LANE"
+            android:text="GENRE LANE"
             android:textSize="30sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

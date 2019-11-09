@@ -2,6 +2,7 @@ package coders.android.msahakyan.deezer.ui.common.lanes
 
 import coders.android.msahakyan.deezer.ui.common.Lane
 import coders.android.msahakyan.deezer.ui.common.LaneType
+import coders.android.msahakyan.deezer_api.model.Album
 import coders.android.msahakyan.deezer_api.model.Artist
 
 /**
@@ -10,7 +11,7 @@ import coders.android.msahakyan.deezer_api.model.Artist
 
 class HeaderLane(
     val lane: Lane,
-    val item: Artist
+    val item: Album
 ) : Lane {
     override val type: LaneType
         get() = LaneType.HEADER_LANE

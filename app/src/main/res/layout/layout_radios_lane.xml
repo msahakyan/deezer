@@ -10,14 +10,15 @@
     
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_margin="5dp">
         
         <TextView
             android:layout_width="300dp"
             android:layout_height="300dp"
             android:background="#cc3689AA"
             android:gravity="center"
-            android:text="RADIOS-LANE"
+            android:text="RADIO LANE"
             android:textSize="30sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"

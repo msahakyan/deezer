@@ -19,7 +19,7 @@ object LaneFactoryRegistry {
     ) {
         factories += object : LaneFactory {
             override val layoutId: Int = layoutId
-            override fun isResponsible(state: Any) = isResponsible(state)
+            override fun isResponsible(data: Any) = isResponsible(data)
             override fun render(view: View, data: Any, position: Int) = render(view, data, position)
         }
     }
@@ -43,7 +43,7 @@ interface LaneFactory {
 
     fun render(view: View, data: Any, position: Int)
 
-    fun isResponsible(state: Any): Boolean
+    fun isResponsible(data: Any): Boolean
 
     fun create(parent: ViewGroup): View =
         from(parent.context).inflate(layoutId, parent, false)

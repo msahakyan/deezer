@@ -21,4 +21,10 @@ class SearchRepository(
 
     suspend fun searchTracks(q: String) =
         searchApi.searchTracks(q)
+
+    suspend fun searchRadios(q: String) =
+        searchApi.searchRadios(q)
+
+    suspend fun searchUsers(q: String) =
+        searchApi.searchUsers(q)
 }

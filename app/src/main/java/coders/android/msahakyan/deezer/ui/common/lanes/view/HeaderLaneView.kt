@@ -16,10 +16,6 @@ class HeaderLaneView @JvmOverloads constructor(
     defStyle: Int = 0
 ) : CardView(context, attrSet, defStyle), Renderable<HeaderLane> {
 
-    companion object {
-        private const val MAX_VISIBLE_ITEMS = 10
-    }
-
     override fun render(data: HeaderLane, position: Int) {
         Timber.v("|>>>> Rendering Header Lane")
         // TODO: Render data ...

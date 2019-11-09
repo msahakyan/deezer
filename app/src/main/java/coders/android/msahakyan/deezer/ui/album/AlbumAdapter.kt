@@ -13,7 +13,7 @@ class AlbumAdapter(
     private val onItemClicked: (Album, Int) -> Unit
 ) : RecyclerView.Adapter<AlbumItemViewHolder>() {
 
-    var list: MutableList<Album> = mutableListOf()
+    private val list: MutableList<Album> = mutableListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         AlbumItemViewHolder(
@@ -25,5 +25,13 @@ class AlbumAdapter(
 
     override fun onBindViewHolder(holder: AlbumItemViewHolder, position: Int) {
         holder.bind(list[position])
+    }
+
+    fun setItems(items: List<Album>?) = items?.let {
+        list.apply {
+            clear()
+            addAll(it)
+            notifyDataSetChanged()
+        }
     }
 }

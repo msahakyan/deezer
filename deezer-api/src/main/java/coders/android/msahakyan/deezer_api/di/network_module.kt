@@ -8,6 +8,7 @@ import coders.android.msahakyan.deezer_api.api.AlbumApi
 import coders.android.msahakyan.deezer_api.api.ArtistApi
 import coders.android.msahakyan.deezer_api.api.GenreApi
 import coders.android.msahakyan.deezer_api.api.PlaylistApi
+import coders.android.msahakyan.deezer_api.api.RadioApi
 import coders.android.msahakyan.deezer_api.api.SearchApi
 import coders.android.msahakyan.deezer_api.api.TrackApi
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
@@ -69,6 +70,7 @@ val networkModule = module {
     retrofitApi<AlbumApi>()
     retrofitApi<ArtistApi>()
     retrofitApi<GenreApi>()
+    retrofitApi<RadioApi>()
     retrofitApi<PlaylistApi>()
     retrofitApi<TrackApi>()
 }

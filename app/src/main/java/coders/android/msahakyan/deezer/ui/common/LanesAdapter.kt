@@ -5,11 +5,13 @@ import androidx.recyclerview.widget.RecyclerView
 import coders.android.msahakyan.deezer.R
 import coders.android.msahakyan.deezer.ui.common.LaneFactoryRegistry.factories
 import coders.android.msahakyan.deezer.ui.common.LaneFactoryRegistry.register
+import coders.android.msahakyan.deezer.ui.common.lanes.AlbumsLane
 import coders.android.msahakyan.deezer.ui.common.lanes.ArtistsLane
 import coders.android.msahakyan.deezer.ui.common.lanes.GenresLane
 import coders.android.msahakyan.deezer.ui.common.lanes.HeaderLane
 import coders.android.msahakyan.deezer.ui.common.lanes.RadiosLane
 import coders.android.msahakyan.deezer.ui.common.lanes.TracksLane
+import coders.android.msahakyan.deezer.ui.common.lanes.view.AlbumsLaneView
 import coders.android.msahakyan.deezer.ui.common.lanes.view.ArtistsLaneView
 import coders.android.msahakyan.deezer.ui.common.lanes.view.GenresLaneView
 import coders.android.msahakyan.deezer.ui.common.lanes.view.HeaderLaneView
@@ -22,10 +24,9 @@ import coders.android.msahakyan.deezer.ui.common.lanes.view.TracksLaneView
 
 class LanesAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    private val list = mutableListOf<Any>()
+    private val lanes = mutableListOf<Any>()
 
     companion object {
-
         init {
             register<HeaderLane, HeaderLaneView>(
                 layoutId = R.layout.layout_header_lane,
@@ -47,6 +48,10 @@ class LanesAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                 layoutId = R.layout.layout_radios_lane,
                 type = LaneType.RADIOS_LANE
             )
+            register<AlbumsLane, AlbumsLaneView>(
+                layoutId = R.layout.layout_albums_lane,
+                type = LaneType.ALBUMS_LANE
+            )
         }
     }
 
@@ -55,24 +60,25 @@ class LanesAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         return object : RecyclerView.ViewHolder(view) {}
     }
 
-    override fun getItemCount() = list.size
+    override fun getItemCount() = lanes.size
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        val data = list[position]
+        val data = lanes[position]
         factories.find { it.isResponsible(data) }?.render(holder.itemView, data, position)
     }
 
-    /**
-     * Registers a [LaneFactory] for given [layoutId] and [type].
-     */
-    inline fun <reified S : Lane, reified V : Renderable<S>> register(
-        layoutId: Int, type: LaneType
-    ) =
-        register(
-            layoutId,
-            { it is S && type.name == it.type.name },
-            { view, state, position -> (view as V).render(state as S, position) }
-        )
+    override fun getItemViewType(position: Int): Int {
+        val item = lanes[position]
+        return factories.indexOfFirst { it.isResponsible(item) }
+    }
+
+    fun addLane(lane: Any) =
+        lanes.add(lane)
+            .also { notifyItemInserted(lanes.size) }
+
+    fun addLaneFirst(lane: Any) =
+        lanes.add(0, lane)
+            .also { notifyItemInserted(0) }
 }
 
 interface Lane {
@@ -82,6 +88,7 @@ interface Lane {
 enum class LaneType(val value: String?) {
     HEADER_LANE("HeaderLane"),
     GENRES_LANE("GenresLane"),
+    ALBUMS_LANE("AlbumsLane"),
     TRACKS_LANE("TracksLane"),
     RADIOS_LANE("RadiosLane"),
     ARTISTS_LANE("ArtistsLane"),

@@ -16,6 +16,10 @@ class GenresLaneView @JvmOverloads constructor(
     defStyle: Int = 0
 ) : LinearLayout(context, attrSet, defStyle), Renderable<GenresLane> {
 
+    companion object {
+        private const val MAX_VISIBLE_ITEMS = 10
+    }
+
     override fun render(data: GenresLane, position: Int) {
         Timber.v("|>>>> Rendering Genre Lane")
         // TODO: Render data ... 
