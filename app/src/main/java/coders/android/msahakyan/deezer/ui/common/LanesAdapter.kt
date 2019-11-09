@@ -5,18 +5,18 @@ import androidx.recyclerview.widget.RecyclerView
 import coders.android.msahakyan.deezer.R
 import coders.android.msahakyan.deezer.ui.common.LaneFactoryRegistry.factories
 import coders.android.msahakyan.deezer.ui.common.LaneFactoryRegistry.register
-import coders.android.msahakyan.deezer.ui.common.lanes.AlbumsLane
-import coders.android.msahakyan.deezer.ui.common.lanes.ArtistsLane
-import coders.android.msahakyan.deezer.ui.common.lanes.GenresLane
+import coders.android.msahakyan.deezer.ui.common.lanes.AlbumLane
+import coders.android.msahakyan.deezer.ui.common.lanes.ArtistLane
+import coders.android.msahakyan.deezer.ui.common.lanes.GenreLane
 import coders.android.msahakyan.deezer.ui.common.lanes.HeaderLane
-import coders.android.msahakyan.deezer.ui.common.lanes.RadiosLane
-import coders.android.msahakyan.deezer.ui.common.lanes.TracksLane
-import coders.android.msahakyan.deezer.ui.common.lanes.view.AlbumsLaneView
-import coders.android.msahakyan.deezer.ui.common.lanes.view.ArtistsLaneView
-import coders.android.msahakyan.deezer.ui.common.lanes.view.GenresLaneView
+import coders.android.msahakyan.deezer.ui.common.lanes.RadioLane
+import coders.android.msahakyan.deezer.ui.common.lanes.TrackLane
+import coders.android.msahakyan.deezer.ui.common.lanes.view.AlbumLaneView
+import coders.android.msahakyan.deezer.ui.common.lanes.view.ArtistLaneView
+import coders.android.msahakyan.deezer.ui.common.lanes.view.GenreLaneView
 import coders.android.msahakyan.deezer.ui.common.lanes.view.HeaderLaneView
-import coders.android.msahakyan.deezer.ui.common.lanes.view.RadiosLaneView
-import coders.android.msahakyan.deezer.ui.common.lanes.view.TracksLaneView
+import coders.android.msahakyan.deezer.ui.common.lanes.view.RadioLaneView
+import coders.android.msahakyan.deezer.ui.common.lanes.view.TrackLaneView
 
 /**
  * @author msahakyan.
@@ -32,25 +32,25 @@ class LanesAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                 layoutId = R.layout.layout_header_lane,
                 type = LaneType.HEADER_LANE
             )
-            register<GenresLane, GenresLaneView>(
+            register<GenreLane, GenreLaneView>(
                 layoutId = R.layout.layout_genres_lane,
-                type = LaneType.GENRES_LANE
+                type = LaneType.GENRE_LANE
             )
-            register<TracksLane, TracksLaneView>(
+            register<TrackLane, TrackLaneView>(
                 layoutId = R.layout.layout_tracks_lane,
-                type = LaneType.TRACKS_LANE
+                type = LaneType.TRACK_LANE
             )
-            register<ArtistsLane, ArtistsLaneView>(
+            register<ArtistLane, ArtistLaneView>(
                 layoutId = R.layout.layout_artists_lane,
-                type = LaneType.ARTISTS_LANE
+                type = LaneType.ARTIST_LANE
             )
-            register<RadiosLane, RadiosLaneView>(
+            register<RadioLane, RadioLaneView>(
                 layoutId = R.layout.layout_radios_lane,
-                type = LaneType.RADIOS_LANE
+                type = LaneType.RADIO_LANE
             )
-            register<AlbumsLane, AlbumsLaneView>(
+            register<AlbumLane, AlbumLaneView>(
                 layoutId = R.layout.layout_albums_lane,
-                type = LaneType.ALBUMS_LANE
+                type = LaneType.ALBUM_LANE
             )
         }
     }
@@ -87,11 +87,11 @@ interface Lane {
 
 enum class LaneType(val value: String?) {
     HEADER_LANE("HeaderLane"),
-    GENRES_LANE("GenresLane"),
-    ALBUMS_LANE("AlbumsLane"),
-    TRACKS_LANE("TracksLane"),
-    RADIOS_LANE("RadiosLane"),
-    ARTISTS_LANE("ArtistsLane"),
+    GENRE_LANE("GenreLane"),
+    ALBUM_LANE("AlbumLane"),
+    TRACK_LANE("TrackLane"),
+    RADIO_LANE("RadioLane"),
+    ARTIST_LANE("ArtistLane"),
     UNKNOWN("Unknown");
 
     companion object {

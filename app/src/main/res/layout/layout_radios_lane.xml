@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<coders.android.msahakyan.deezer.ui.common.lanes.view.RadiosLaneView xmlns:android="http://schemas.android.com/apk/res/android"
+<coders.android.msahakyan.deezer.ui.common.lanes.view.RadioLaneView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/rootLayout"
     android:layout_width="match_parent"
@@ -28,4 +28,4 @@
     
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-</coders.android.msahakyan.deezer.ui.common.lanes.view.RadiosLaneView>
+</coders.android.msahakyan.deezer.ui.common.lanes.view.RadioLaneView>

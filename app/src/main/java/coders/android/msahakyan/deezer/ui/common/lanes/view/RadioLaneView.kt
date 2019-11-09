@@ -4,24 +4,20 @@ import android.content.Context
 import android.util.AttributeSet
 import android.widget.LinearLayout
 import coders.android.msahakyan.deezer.ui.common.Renderable
-import coders.android.msahakyan.deezer.ui.common.lanes.GenresLane
+import coders.android.msahakyan.deezer.ui.common.lanes.RadioLane
 import timber.log.Timber
 
 /**
  * @author msahakyan.
  */
-class GenresLaneView @JvmOverloads constructor(
+class RadioLaneView @JvmOverloads constructor(
     context: Context,
     attrSet: AttributeSet? = null,
     defStyle: Int = 0
-) : LinearLayout(context, attrSet, defStyle), Renderable<GenresLane> {
+) : LinearLayout(context, attrSet, defStyle), Renderable<RadioLane> {
 
-    companion object {
-        private const val MAX_VISIBLE_ITEMS = 10
-    }
-
-    override fun render(data: GenresLane, position: Int) {
-        Timber.v("|>>>> Rendering Genre Lane")
+    override fun render(data: RadioLane, position: Int) {
+        Timber.v("|>>>> Rendering Radios Lane")
         // TODO: Render data ... 
     }
 }

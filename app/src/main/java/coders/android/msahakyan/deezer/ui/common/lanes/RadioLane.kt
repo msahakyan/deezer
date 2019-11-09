@@ -2,16 +2,16 @@ package coders.android.msahakyan.deezer.ui.common.lanes
 
 import coders.android.msahakyan.deezer.ui.common.Lane
 import coders.android.msahakyan.deezer.ui.common.LaneType
-import coders.android.msahakyan.deezer_api.model.Track
+import coders.android.msahakyan.deezer_api.model.Radio
 
 /**
  * @author msahakyan.
  */
 
-class TracksLane(
+class RadioLane(
     val lane: Lane,
-    val items: List<Track>? = null
+    val items: List<Radio>? = null
 ) : Lane {
     override val type: LaneType
-        get() = LaneType.TRACKS_LANE
+        get() = LaneType.RADIO_LANE
 }

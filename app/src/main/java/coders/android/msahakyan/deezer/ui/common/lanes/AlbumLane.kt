@@ -2,16 +2,16 @@ package coders.android.msahakyan.deezer.ui.common.lanes
 
 import coders.android.msahakyan.deezer.ui.common.Lane
 import coders.android.msahakyan.deezer.ui.common.LaneType
-import coders.android.msahakyan.deezer_api.model.Genre
+import coders.android.msahakyan.deezer_api.model.Album
 
 /**
  * @author msahakyan.
  */
 
-class GenresLane(
+class AlbumLane(
     val lane: Lane,
-    val items: List<Genre>? = null
+    val items: List<Album>? = null
 ) : Lane {
     override val type: LaneType
-        get() = LaneType.GENRES_LANE
+        get() = LaneType.ALBUM_LANE
 }

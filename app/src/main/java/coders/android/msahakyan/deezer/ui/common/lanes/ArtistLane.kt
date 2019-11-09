@@ -8,10 +8,10 @@ import coders.android.msahakyan.deezer_api.model.Artist
  * @author msahakyan.
  */
 
-class ArtistsLane(
+class ArtistLane(
     val lane: Lane,
     val items: List<Artist>? = null
 ) : Lane {
     override val type: LaneType
-        get() = LaneType.ARTISTS_LANE
+        get() = LaneType.ARTIST_LANE
 }

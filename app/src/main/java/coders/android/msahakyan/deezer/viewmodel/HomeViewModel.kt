@@ -5,12 +5,12 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
 import coders.android.msahakyan.deezer.ui.common.Lane
 import coders.android.msahakyan.deezer.ui.common.LaneType
-import coders.android.msahakyan.deezer.ui.common.lanes.AlbumsLane
-import coders.android.msahakyan.deezer.ui.common.lanes.ArtistsLane
-import coders.android.msahakyan.deezer.ui.common.lanes.GenresLane
+import coders.android.msahakyan.deezer.ui.common.lanes.AlbumLane
+import coders.android.msahakyan.deezer.ui.common.lanes.ArtistLane
+import coders.android.msahakyan.deezer.ui.common.lanes.GenreLane
 import coders.android.msahakyan.deezer.ui.common.lanes.HeaderLane
-import coders.android.msahakyan.deezer.ui.common.lanes.RadiosLane
-import coders.android.msahakyan.deezer.ui.common.lanes.TracksLane
+import coders.android.msahakyan.deezer.ui.common.lanes.RadioLane
+import coders.android.msahakyan.deezer.ui.common.lanes.TrackLane
 import coders.android.msahakyan.deezer_api.repository.GenreRepository
 import coders.android.msahakyan.deezer_api.repository.SearchRepository
 import kotlinx.coroutines.Dispatchers
@@ -27,6 +27,7 @@ class HomeViewModel(
     companion object {
         private const val DEFAULT_SEARCH_TERM = "t"
         private const val BEATLES_SEARCH_TERM = "Beatles"
+        private const val MAX_VISIBLE_ITEMS = 20
     }
 
     val topAlbum: LiveData<HeaderLane> = liveData(Dispatchers.IO) {
@@ -46,15 +47,15 @@ class HomeViewModel(
             }
     }
 
-    val genreLane: LiveData<GenresLane> = liveData(Dispatchers.IO) {
+    val genreLane: LiveData<GenreLane> = liveData(Dispatchers.IO) {
         genreRepository.fetchGenres().data
-            .take(20)
+            .take(MAX_VISIBLE_ITEMS)
             .also {
                 emit(
-                    GenresLane(
+                    GenreLane(
                         lane = object : Lane {
                             override val type: LaneType
-                                get() = LaneType.GENRES_LANE
+                                get() = LaneType.GENRE_LANE
                         },
                         items = it
                     )
@@ -62,16 +63,16 @@ class HomeViewModel(
             }
     }
 
-    val trackLane: LiveData<TracksLane> = liveData(Dispatchers.IO) {
+    val trackLane: LiveData<TrackLane> = liveData(Dispatchers.IO) {
         searchRepository
             .searchTracks(DEFAULT_SEARCH_TERM).data
-            .take(20)
+            .take(MAX_VISIBLE_ITEMS)
             .also {
                 emit(
-                    TracksLane(
+                    TrackLane(
                         lane = object : Lane {
                             override val type: LaneType
-                                get() = LaneType.TRACKS_LANE
+                                get() = LaneType.TRACK_LANE
                         },
                         items = it
                     )
@@ -79,16 +80,16 @@ class HomeViewModel(
             }
     }
 
-    val albumLane: LiveData<AlbumsLane> = liveData(Dispatchers.IO) {
+    val albumLane: LiveData<AlbumLane> = liveData(Dispatchers.IO) {
         searchRepository
             .searchAlbums(DEFAULT_SEARCH_TERM).data
-            .take(20)
+            .take(MAX_VISIBLE_ITEMS)
             .also {
                 emit(
-                    AlbumsLane(
+                    AlbumLane(
                         lane = object : Lane {
                             override val type: LaneType
-                                get() = LaneType.ALBUMS_LANE
+                                get() = LaneType.ALBUM_LANE
                         },
                         items = it
                     )
@@ -96,16 +97,16 @@ class HomeViewModel(
             }
     }
 
-    val artistLane: LiveData<ArtistsLane> = liveData(Dispatchers.IO) {
+    val artistLane: LiveData<ArtistLane> = liveData(Dispatchers.IO) {
         searchRepository
             .searchArtists(DEFAULT_SEARCH_TERM).data
-//            .take(20)
+            .take(MAX_VISIBLE_ITEMS)
             .also {
                 emit(
-                    ArtistsLane(
+                    ArtistLane(
                         lane = object : Lane {
                             override val type: LaneType
-                                get() = LaneType.ARTISTS_LANE
+                                get() = LaneType.ARTIST_LANE
                         },
                         items = it
                     )
@@ -113,16 +114,16 @@ class HomeViewModel(
             }
     }
 
-    val radioLane: LiveData<RadiosLane> = liveData(Dispatchers.IO) {
+    val radioLane: LiveData<RadioLane> = liveData(Dispatchers.IO) {
         searchRepository
             .searchRadios(DEFAULT_SEARCH_TERM).data
-            .take(20)
+            .take(MAX_VISIBLE_ITEMS)
             .also {
                 emit(
-                    RadiosLane(
+                    RadioLane(
                         lane = object : Lane {
                             override val type: LaneType
-                                get() = LaneType.RADIOS_LANE
+                                get() = LaneType.RADIO_LANE
                         },
                         items = it
                     )

@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import coders.android.msahakyan.deezer.ui.album.AlbumAdapter
 import coders.android.msahakyan.deezer.ui.common.Renderable
-import coders.android.msahakyan.deezer.ui.common.lanes.AlbumsLane
+import coders.android.msahakyan.deezer.ui.common.lanes.AlbumLane
 import kotlinx.android.synthetic.main.layout_albums_lane.view.recycler_view
 import timber.log.Timber
 
@@ -16,11 +16,11 @@ import timber.log.Timber
  * @author msahakyan.
  */
 
-class AlbumsLaneView @JvmOverloads constructor(
+class AlbumLaneView @JvmOverloads constructor(
     context: Context,
     attrSet: AttributeSet? = null,
     defStyle: Int = 0
-) : LinearLayout(context, attrSet, defStyle), Renderable<AlbumsLane> {
+) : LinearLayout(context, attrSet, defStyle), Renderable<AlbumLane> {
 
     private val adapter: AlbumAdapter by lazy { createAdapter() }
     private val layoutManager: RecyclerView.LayoutManager by lazy { LinearLayoutManager(context, RecyclerView.HORIZONTAL, false) }
@@ -38,7 +38,7 @@ class AlbumsLaneView @JvmOverloads constructor(
         recycler_view.layoutManager = layoutManager
     }
 
-    override fun render(data: AlbumsLane, position: Int) {
+    override fun render(data: AlbumLane, position: Int) {
         Timber.v("|>>>> `Rendering Album Lane`")
         adapter.setItems(data.items)
     }

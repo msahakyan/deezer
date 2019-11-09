@@ -13,7 +13,7 @@ val viewModelsModule = module {
 
     viewModel { HomeViewModel(searchRepository = get(), genreRepository = get()) }
 
-    // Experimental
+    // TODO: Should be removed
     viewModel { SearchViewModel(searchRepository = get()) }
 
 }
