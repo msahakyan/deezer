@@ -1,6 +1,11 @@
 <resources>
     <string name="app_name">Deezer</string>
-
+    <string name="home_bottom_nav_item_title">Home</string>
+    <string name="album_bottom_nav_item_title">Album</string>
+    <string name="search_bottom_nav_item_title">Search</string>
+    <string name="track_bottom_nav_item_title">Track</string>
+    <string name="radio_bottom_nav_item_title">Radio</string>
+    
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

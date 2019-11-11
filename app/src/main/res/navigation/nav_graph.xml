@@ -3,12 +3,36 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/homeFragment">
-
+    app:startDestination="@id/bottomNavFragmentItemHome">
+    
     <fragment
-        android:id="@+id/homeFragment"
+        android:id="@+id/bottomNavFragmentItemHome"
         android:name="coders.android.msahakyan.deezer.ui.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
+    
+    <fragment
+        android:id="@+id/bottomNavFragmentItemAlbum"
+        android:name="coders.android.msahakyan.deezer.AlbumFragment"
+        android:label="fragment_album"
+        tools:layout="@layout/fragment_album" />
+    
+    <fragment
+        android:id="@+id/bottomNavFragmentItemSearch"
+        android:name="coders.android.msahakyan.deezer.SearchFragment"
+        android:label="fragment_search"
+        tools:layout="@layout/fragment_search" />
+    
+    <fragment
+        android:id="@+id/bottomNavFragmentItemTrack"
+        android:name="coders.android.msahakyan.deezer.TrackFragment"
+        android:label="fragment_track"
+        tools:layout="@layout/fragment_track" />
+    
+    <fragment
+        android:id="@+id/bottomNavFragmentItemRadio"
+        android:name="coders.android.msahakyan.deezer.RadioFragment"
+        android:label="fragment_radio"
+        tools:layout="@layout/fragment_radio" />
 
 </navigation>

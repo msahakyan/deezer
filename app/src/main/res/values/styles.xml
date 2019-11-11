@@ -22,7 +22,16 @@
         <item name="subtitleTextColor">@color/white</item>
     </style>
     
+    <style name="Widget.BottomNavigationView" parent="Widget.Design.BottomNavigationView">
+        <item name="android:textSize">13sp</item>
+        <item name="fontFamily">@font/campton_book</item>
+    </style>
+    
     <style name="AppTheme.Headline" parent="AppTheme.FontStandard">
+        <item name="android:textSize">17sp</item>
+    </style>
+    
+    <style name="AppTheme.HeadlineBold" parent="AppTheme.FontBold">
         <item name="android:textSize">17sp</item>
     </style>
     

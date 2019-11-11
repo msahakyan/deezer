@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    
+    <item
+        android:id="@+id/bottomNavFragmentItemHome"
+        android:icon="@drawable/ic_home_28dp"
+        android:title="@string/home_bottom_nav_item_title" />
+    <item
+        android:id="@+id/bottomNavFragmentItemAlbum"
+        android:icon="@drawable/ic_album_28dp"
+        android:title="@string/album_bottom_nav_item_title" />
+    <item
+        android:id="@+id/bottomNavFragmentItemSearch"
+        android:icon="@drawable/ic_search_28dp"
+        android:title="@string/search_bottom_nav_item_title" />
+    <item
+        android:id="@+id/bottomNavFragmentItemTrack"
+        android:icon="@drawable/ic_audiotrack_28dp"
+        android:title="@string/track_bottom_nav_item_title" />
+    <item
+        android:id="@+id/bottomNavFragmentItemRadio"
+        android:icon="@drawable/ic_radio_28dp"
+        android:title="@string/radio_bottom_nav_item_title" />
+</menu>

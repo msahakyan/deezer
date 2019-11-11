@@ -6,4 +6,8 @@
     
     <color name="white">#FFFFFF</color>
     <color name="transparent">#00000000</color>
+    
+    <color name="bottom_navigation_view_bg">#C6000000</color>
+    <color name="navigation_item_unselected">#8e8e8e</color>
+    <color name="navigation_item_selected">#ffffff</color>
 </resources>

@@ -26,7 +26,7 @@ class HomeViewModel(
 
     companion object {
         private const val DEFAULT_SEARCH_TERM = "t"
-        private const val BEATLES_SEARCH_TERM = "Beatles"
+        private const val BEATLES_SEARCH_TERM = "Eminem"
         private const val MAX_VISIBLE_ITEMS = 20
     }
 
