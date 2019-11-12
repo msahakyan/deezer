@@ -56,39 +56,9 @@ class HomeFragment : Fragment() {
     }
 
     private fun registerObservers() {
-        viewModel.topAlbum.observe(viewLifecycleOwner, Observer {
+        viewModel.lanes.observe(viewLifecycleOwner, Observer {
             with(lanesAdapter) {
-                addLaneFirst(it)
-            }
-        })
-
-        viewModel.genreLane.observe(viewLifecycleOwner, Observer {
-            with(lanesAdapter) {
-                addLane(it)
-            }
-        })
-
-        viewModel.artistLane.observe(viewLifecycleOwner, Observer {
-            with(lanesAdapter) {
-                addLane(it)
-            }
-        })
-
-        viewModel.albumLane.observe(viewLifecycleOwner, Observer {
-            with(lanesAdapter) {
-                addLane(it)
-            }
-        })
-
-        viewModel.trackLane.observe(viewLifecycleOwner, Observer {
-            with(lanesAdapter) {
-                addLane(it)
-            }
-        })
-
-        viewModel.radioLane.observe(viewLifecycleOwner, Observer {
-            with(lanesAdapter) {
-                addLane(it)
+                setContent(it)
             }
         })
     }

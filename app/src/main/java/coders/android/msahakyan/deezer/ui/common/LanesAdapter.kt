@@ -79,6 +79,18 @@ class LanesAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     fun addLaneFirst(lane: Any) =
         lanes.add(0, lane)
             .also { notifyItemInserted(0) }
+
+    /**
+     * Clears a list of old items, sets new ones instead
+     * and notifies about data set changed in the end.
+     */
+    fun setContent(items: List<Any>) {
+        with(lanes) {
+            clear()
+            addAll(items)
+        }
+        notifyDataSetChanged()
+    }
 }
 
 interface Lane {

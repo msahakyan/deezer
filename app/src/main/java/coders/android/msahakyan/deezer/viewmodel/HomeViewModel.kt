@@ -5,6 +5,12 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
 import coders.android.msahakyan.deezer.ui.common.Lane
 import coders.android.msahakyan.deezer.ui.common.LaneType
+import coders.android.msahakyan.deezer.ui.common.LaneType.ALBUM_LANE
+import coders.android.msahakyan.deezer.ui.common.LaneType.ARTIST_LANE
+import coders.android.msahakyan.deezer.ui.common.LaneType.GENRE_LANE
+import coders.android.msahakyan.deezer.ui.common.LaneType.HEADER_LANE
+import coders.android.msahakyan.deezer.ui.common.LaneType.RADIO_LANE
+import coders.android.msahakyan.deezer.ui.common.LaneType.TRACK_LANE
 import coders.android.msahakyan.deezer.ui.common.lanes.AlbumLane
 import coders.android.msahakyan.deezer.ui.common.lanes.ArtistLane
 import coders.android.msahakyan.deezer.ui.common.lanes.GenreLane
@@ -30,104 +36,59 @@ class HomeViewModel(
         private const val MAX_VISIBLE_ITEMS = 20
     }
 
-    val topAlbum: LiveData<HeaderLane> = liveData(Dispatchers.IO) {
-        searchRepository
-            .searchAlbums(BEATLES_SEARCH_TERM)
-            .data[0]
-            .also {
-                emit(
-                    HeaderLane(
-                        lane = object : Lane {
-                            override val type: LaneType
-                                get() = LaneType.HEADER_LANE
-                        },
-                        item = it
-                    )
-                )
-            }
-    }
-
-    val genreLane: LiveData<GenreLane> = liveData(Dispatchers.IO) {
-        genreRepository.fetchGenres().data
-            .take(MAX_VISIBLE_ITEMS)
-            .also {
-                emit(
-                    GenreLane(
-                        lane = object : Lane {
-                            override val type: LaneType
-                                get() = LaneType.GENRE_LANE
-                        },
-                        items = it
-                    )
-                )
-            }
-    }
-
-    val trackLane: LiveData<TrackLane> = liveData(Dispatchers.IO) {
-        searchRepository
-            .searchTracks(DEFAULT_SEARCH_TERM).data
-            .take(MAX_VISIBLE_ITEMS)
-            .also {
-                emit(
-                    TrackLane(
-                        lane = object : Lane {
-                            override val type: LaneType
-                                get() = LaneType.TRACK_LANE
-                        },
-                        items = it
-                    )
-                )
-            }
-    }
-
-    val albumLane: LiveData<AlbumLane> = liveData(Dispatchers.IO) {
-        searchRepository
-            .searchAlbums(DEFAULT_SEARCH_TERM).data
-            .take(MAX_VISIBLE_ITEMS)
-            .also {
-                emit(
-                    AlbumLane(
-                        lane = object : Lane {
-                            override val type: LaneType
-                                get() = LaneType.ALBUM_LANE
-                        },
-                        items = it
-                    )
-                )
-            }
-    }
-
-    val artistLane: LiveData<ArtistLane> = liveData(Dispatchers.IO) {
-        searchRepository
-            .searchArtists(DEFAULT_SEARCH_TERM).data
-            .take(MAX_VISIBLE_ITEMS)
-            .also {
-                emit(
-                    ArtistLane(
-                        lane = object : Lane {
-                            override val type: LaneType
-                                get() = LaneType.ARTIST_LANE
-                        },
-                        items = it
-                    )
-                )
-            }
-    }
-
-    val radioLane: LiveData<RadioLane> = liveData(Dispatchers.IO) {
-        searchRepository
-            .searchRadios(DEFAULT_SEARCH_TERM).data
-            .take(MAX_VISIBLE_ITEMS)
-            .also {
-                emit(
-                    RadioLane(
-                        lane = object : Lane {
-                            override val type: LaneType
-                                get() = LaneType.RADIO_LANE
-                        },
-                        items = it
-                    )
-                )
-            }
+    val lanes: LiveData<List<Lane>> = liveData(Dispatchers.IO) {
+        val headerLane = HeaderLane(
+            lane = object : Lane {
+                override val type = HEADER_LANE
+            },
+            item = searchRepository
+                .searchAlbums(BEATLES_SEARCH_TERM).data[0]
+        )
+        val genreLane = GenreLane(
+            lane = object : Lane {
+                override val type: LaneType
+                    get() = GENRE_LANE
+            },
+            items = genreRepository
+                .fetchGenres().data
+                .take(MAX_VISIBLE_ITEMS)
+        )
+        val trackLane = TrackLane(
+            lane = object : Lane {
+                override val type: LaneType
+                    get() = TRACK_LANE
+            },
+            items = searchRepository
+                .searchTracks(DEFAULT_SEARCH_TERM).data
+                .take(MAX_VISIBLE_ITEMS)
+        )
+        val albumLane = AlbumLane(
+            lane = object : Lane {
+                override val type: LaneType
+                    get() = ALBUM_LANE
+            },
+            items = searchRepository
+                .searchAlbums(DEFAULT_SEARCH_TERM).data
+                .take(MAX_VISIBLE_ITEMS)
+        )
+        val artistLane = ArtistLane(
+            lane = object : Lane {
+                override val type: LaneType
+                    get() = ARTIST_LANE
+            },
+            items = searchRepository
+                .searchArtists(DEFAULT_SEARCH_TERM).data
+                .take(MAX_VISIBLE_ITEMS)
+        )
+        val radioLane = RadioLane(
+            lane = object : Lane {
+                override val type: LaneType
+                    get() = RADIO_LANE
+            },
+            items = searchRepository
+                .searchRadios(DEFAULT_SEARCH_TERM).data
+                .take(MAX_VISIBLE_ITEMS)
+        )
+        emit(listOf(headerLane, albumLane, genreLane, artistLane, trackLane, radioLane))
     }
 }
