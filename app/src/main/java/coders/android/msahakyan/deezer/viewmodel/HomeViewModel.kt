@@ -20,6 +20,8 @@ import coders.android.msahakyan.deezer.ui.common.lanes.TrackLane
 import coders.android.msahakyan.deezer_api.repository.GenreRepository
 import coders.android.msahakyan.deezer_api.repository.SearchRepository
 import kotlinx.coroutines.Dispatchers
+import timber.log.Timber
+import kotlin.system.measureTimeMillis
 
 /**
  * @author msahakyan.
@@ -31,64 +33,69 @@ class HomeViewModel(
 ) : ViewModel() {
 
     companion object {
-        private const val DEFAULT_SEARCH_TERM = "t"
-        private const val BEATLES_SEARCH_TERM = "Eminem"
+        private const val DEFAULT_SEARCH_TERM = "rock"
+        private const val ARTIST_SEARCH_TERM = "g"
+        private const val HEADER_LANE_SEARCH_TERM = "Vanessa Mae"
         private const val MAX_VISIBLE_ITEMS = 20
     }
 
     val lanes: LiveData<List<Lane>> = liveData(Dispatchers.IO) {
-        val headerLane = HeaderLane(
-            lane = object : Lane {
-                override val type = HEADER_LANE
-            },
-            item = searchRepository
-                .searchAlbums(BEATLES_SEARCH_TERM).data[0]
-        )
-        val genreLane = GenreLane(
-            lane = object : Lane {
-                override val type: LaneType
-                    get() = GENRE_LANE
-            },
-            items = genreRepository
-                .fetchGenres().data
-                .take(MAX_VISIBLE_ITEMS)
-        )
-        val trackLane = TrackLane(
-            lane = object : Lane {
-                override val type: LaneType
-                    get() = TRACK_LANE
-            },
-            items = searchRepository
-                .searchTracks(DEFAULT_SEARCH_TERM).data
-                .take(MAX_VISIBLE_ITEMS)
-        )
-        val albumLane = AlbumLane(
-            lane = object : Lane {
-                override val type: LaneType
-                    get() = ALBUM_LANE
-            },
-            items = searchRepository
-                .searchAlbums(DEFAULT_SEARCH_TERM).data
-                .take(MAX_VISIBLE_ITEMS)
-        )
-        val artistLane = ArtistLane(
-            lane = object : Lane {
-                override val type: LaneType
-                    get() = ARTIST_LANE
-            },
-            items = searchRepository
-                .searchArtists(DEFAULT_SEARCH_TERM).data
-                .take(MAX_VISIBLE_ITEMS)
-        )
-        val radioLane = RadioLane(
-            lane = object : Lane {
-                override val type: LaneType
-                    get() = RADIO_LANE
-            },
-            items = searchRepository
-                .searchRadios(DEFAULT_SEARCH_TERM).data
-                .take(MAX_VISIBLE_ITEMS)
-        )
-        emit(listOf(headerLane, albumLane, genreLane, artistLane, trackLane, radioLane))
+        val timestamp = measureTimeMillis {
+            val headerLane = HeaderLane(
+                lane = object : Lane {
+                    override val type = HEADER_LANE
+                },
+                item = searchRepository
+                    .searchAlbums(HEADER_LANE_SEARCH_TERM).data[0]
+            )
+            val genreLane = GenreLane(
+                lane = object : Lane {
+                    override val type: LaneType
+                        get() = GENRE_LANE
+                },
+                items = genreRepository
+                    .fetchGenres().data
+                    .take(MAX_VISIBLE_ITEMS)
+            )
+            val trackLane = TrackLane(
+                lane = object : Lane {
+                    override val type: LaneType
+                        get() = TRACK_LANE
+                },
+                items = searchRepository
+                    .searchTracks(DEFAULT_SEARCH_TERM).data
+                    .take(MAX_VISIBLE_ITEMS)
+            )
+            val albumLane = AlbumLane(
+                lane = object : Lane {
+                    override val type: LaneType
+                        get() = ALBUM_LANE
+                },
+                items = searchRepository
+                    .searchAlbums(DEFAULT_SEARCH_TERM).data
+                    .take(MAX_VISIBLE_ITEMS)
+            )
+            val artistLane = ArtistLane(
+                lane = object : Lane {
+                    override val type: LaneType
+                        get() = ARTIST_LANE
+                },
+                items = searchRepository
+                    .searchArtists(ARTIST_SEARCH_TERM).data
+                    .filter { it.picture_big?.contains("artist//") == false }
+                    .take(MAX_VISIBLE_ITEMS)
+            )
+            val radioLane = RadioLane(
+                lane = object : Lane {
+                    override val type: LaneType
+                        get() = RADIO_LANE
+                },
+                items = searchRepository
+                    .searchRadios(DEFAULT_SEARCH_TERM).data
+                    .take(MAX_VISIBLE_ITEMS)
+            )
+            emit(listOf(headerLane, albumLane, genreLane, artistLane, trackLane, radioLane))
+        }
+        Timber.d("||> timestamp = $timestamp ms.")
     }
 }

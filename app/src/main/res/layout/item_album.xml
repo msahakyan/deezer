@@ -8,7 +8,7 @@
     android:layout_marginStart="@dimen/list_item_margin"
     android:layout_marginTop="@dimen/list_item_margin"
     android:layout_marginEnd="@dimen/list_item_margin"
-    app:cardBackgroundColor="#000"
+    app:cardBackgroundColor="#44000000"
     app:cardCornerRadius="2dp"
     app:cardElevation="0dp">
     

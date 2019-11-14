@@ -2,5 +2,6 @@
 <resources>
     <dimen name="list_item_width">154dp</dimen>
     <dimen name="list_item_height">232dp</dimen>
+    <dimen name="genre_item_height">140dp</dimen>
     <dimen name="list_item_margin">6dp</dimen>
 </resources>

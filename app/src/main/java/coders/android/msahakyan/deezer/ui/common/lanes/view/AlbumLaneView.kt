@@ -4,9 +4,11 @@ import android.content.Context
 import android.util.AttributeSet
 import android.widget.LinearLayout
 import android.widget.Toast
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import coders.android.msahakyan.deezer.ui.album.AlbumAdapter
+import coders.android.msahakyan.deezer.ui.HomeFragmentDirections
+import coders.android.msahakyan.deezer.ui.adapter.AlbumAdapter
 import coders.android.msahakyan.deezer.ui.common.Renderable
 import coders.android.msahakyan.deezer.ui.common.lanes.AlbumLane
 import kotlinx.android.synthetic.main.layout_albums_lane.view.recycler_view
@@ -30,6 +32,7 @@ class AlbumLaneView @JvmOverloads constructor(
             Toast.makeText(
                 context, "Album ${album.title} on position ${position + 1} was clicked", Toast.LENGTH_SHORT
             ).show()
+            findNavController().navigate(HomeFragmentDirections.actionFragmentItemAlbum())
         })
 
     override fun onFinishInflate() {

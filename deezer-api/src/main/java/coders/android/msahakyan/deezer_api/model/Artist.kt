@@ -8,6 +8,7 @@ data class Artist(
     val id: Int,
     val name: String,
     val picture: String?,
+    val picture_big: String?,
     val link: String?,
     val nb_album: Int?,
     val nb_fan: Int?,

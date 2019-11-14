@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<coders.android.msahakyan.deezer.ui.common.lanes.view.GenreLaneView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<coders.android.msahakyan.deezer.ui.common.lanes.view.GenreLaneView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/rootLayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -15,17 +15,32 @@
         android:layout_margin="5dp">
         
         <TextView
-            android:layout_width="300dp"
-            android:layout_height="300dp"
-            android:background="#ccdef789"
-            android:gravity="center"
-            android:textStyle="bold"
-            android:text="GENRE LANE"
-            android:textSize="30sp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:id="@+id/header_view"
+            style="@style/AppTheme.HeadlineBold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:paddingStart="8dp"
+            android:paddingTop="15dp"
+            android:paddingEnd="8dp"
+            android:paddingBottom="5dp"
+            android:text="@string/label_genres"
+            android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+        
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:nestedScrollingEnabled="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/header_view"
+            app:layout_goneMarginTop="0dp"
+            tools:layout_height="400dp" />
     
     </androidx.constraintlayout.widget.ConstraintLayout>
 

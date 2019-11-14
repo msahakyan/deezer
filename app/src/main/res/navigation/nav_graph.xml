@@ -9,7 +9,11 @@
         android:id="@+id/bottomNavFragmentItemHome"
         android:name="coders.android.msahakyan.deezer.ui.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_fragmentItemAlbum"
+            app:destination="@id/bottomNavFragmentItemAlbum" />
+    </fragment>
     
     <fragment
         android:id="@+id/bottomNavFragmentItemAlbum"

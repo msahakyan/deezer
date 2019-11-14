@@ -6,6 +6,8 @@
     <string name="track_bottom_nav_item_title">Track</string>
     <string name="radio_bottom_nav_item_title">Radio</string>
     
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="popular_albums">Popular Albums</string>
+    <string name="popular_artists">Popular Artists</string>
+    <string name="label_genres">Genres</string>
+    <string name="popular_audiotracks">Popular Audio tracks</string>
 </resources>

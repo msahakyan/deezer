@@ -30,7 +30,6 @@ class HeaderLaneView @JvmOverloads constructor(
         with(data.item) {
             cover_image_headerView.loadUrl(cover?.buildCover(PictureType.XL), R.drawable.fallback_album)
             title_headerView.text = title
-            label_headerView.text = label
             setOnClickListener {
                 Toast.makeText(context, "Header Lane $title was clicked", Toast.LENGTH_SHORT).show()
             }
