@@ -10,7 +10,6 @@ import coders.android.msahakyan.deezer_api.model.Artist
  */
 
 class HeaderLane(
-    val lane: Lane,
     val item: Album
 ) : Lane {
     override val type: LaneType

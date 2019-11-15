@@ -99,11 +99,11 @@ interface Lane {
 
 enum class LaneType(val value: String?) {
     HEADER_LANE("HeaderLane"),
-    GENRE_LANE("GenreLane"),
     ALBUM_LANE("AlbumLane"),
+    GENRE_LANE("GenreLane"),
+    ARTIST_LANE("ArtistLane"),
     TRACK_LANE("TrackLane"),
-    RADIO_LANE("RadioLane"),
-    ARTIST_LANE("ArtistLane");
+    RADIO_LANE("RadioLane");
 
     companion object {
         fun fromString(type: String?) =

@@ -9,7 +9,6 @@ import coders.android.msahakyan.deezer_api.model.Track
  */
 
 class TrackLane(
-    val lane: Lane,
     val items: List<Track>? = null
 ) : Lane {
     override val type: LaneType

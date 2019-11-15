@@ -9,7 +9,6 @@ import coders.android.msahakyan.deezer_api.model.Radio
  */
 
 class RadioLane(
-    val lane: Lane,
     val items: List<Radio>? = null
 ) : Lane {
     override val type: LaneType

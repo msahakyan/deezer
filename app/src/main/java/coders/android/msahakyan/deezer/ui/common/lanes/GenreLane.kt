@@ -9,7 +9,6 @@ import coders.android.msahakyan.deezer_api.model.Genre
  */
 
 class GenreLane(
-    val lane: Lane,
     val items: List<Genre>? = null
 ) : Lane {
     override val type: LaneType

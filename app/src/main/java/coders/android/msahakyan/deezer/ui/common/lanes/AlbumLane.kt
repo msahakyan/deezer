@@ -9,7 +9,6 @@ import coders.android.msahakyan.deezer_api.model.Album
  */
 
 class AlbumLane(
-    val lane: Lane,
     val items: List<Album>? = null
 ) : Lane {
     override val type: LaneType

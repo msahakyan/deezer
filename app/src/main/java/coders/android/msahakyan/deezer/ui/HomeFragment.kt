@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import coders.android.msahakyan.deezer.R
 import coders.android.msahakyan.deezer.ui.common.LanesAdapter
-import coders.android.msahakyan.deezer.viewmodel.HomeViewModelChannels
+import coders.android.msahakyan.deezer.viewmodel.HomeViewModel
 import kotlinx.android.synthetic.main.fragment_home.recycler_view
 import kotlinx.android.synthetic.main.fragment_home.toolbar
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -24,7 +24,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class HomeFragment : Fragment() {
 
     @ExperimentalCoroutinesApi
-    private val viewModel: HomeViewModelChannels by viewModel()
+    private val viewModel: HomeViewModel by viewModel()
 
     private lateinit var lanesAdapter: LanesAdapter
     private lateinit var layoutManager: RecyclerView.LayoutManager
