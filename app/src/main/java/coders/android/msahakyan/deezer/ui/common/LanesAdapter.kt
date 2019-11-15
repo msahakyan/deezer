@@ -103,11 +103,10 @@ enum class LaneType(val value: String?) {
     ALBUM_LANE("AlbumLane"),
     TRACK_LANE("TrackLane"),
     RADIO_LANE("RadioLane"),
-    ARTIST_LANE("ArtistLane"),
-    UNKNOWN("Unknown");
+    ARTIST_LANE("ArtistLane");
 
     companion object {
         fun fromString(type: String?) =
-            values().find { it.value == type } ?: UNKNOWN
+            values().find { it.value == type }
     }
 }

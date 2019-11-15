@@ -11,9 +11,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import coders.android.msahakyan.deezer.R
 import coders.android.msahakyan.deezer.ui.common.LanesAdapter
-import coders.android.msahakyan.deezer.viewmodel.HomeViewModel
+import coders.android.msahakyan.deezer.viewmodel.HomeViewModelChannels
 import kotlinx.android.synthetic.main.fragment_home.recycler_view
 import kotlinx.android.synthetic.main.fragment_home.toolbar
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
@@ -22,7 +23,8 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeFragment : Fragment() {
 
-    private val viewModel: HomeViewModel by viewModel()
+    @ExperimentalCoroutinesApi
+    private val viewModel: HomeViewModelChannels by viewModel()
 
     private lateinit var lanesAdapter: LanesAdapter
     private lateinit var layoutManager: RecyclerView.LayoutManager
@@ -42,6 +44,7 @@ class HomeFragment : Fragment() {
     ): View? =
         inflater.inflate(R.layout.fragment_home, container, false)
 
+    @ExperimentalCoroutinesApi
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupWidgets()
@@ -55,8 +58,9 @@ class HomeFragment : Fragment() {
         recycler_view.adapter = lanesAdapter
     }
 
+    @ExperimentalCoroutinesApi
     private fun registerObservers() {
-        viewModel.lanes.observe(viewLifecycleOwner, Observer {
+        viewModel.lanesLiveData.observe(viewLifecycleOwner, Observer {
             with(lanesAdapter) {
                 setContent(it)
             }
