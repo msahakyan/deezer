@@ -25,14 +25,20 @@ class AlbumLaneView @JvmOverloads constructor(
 ) : LinearLayout(context, attrSet, defStyle), Renderable<AlbumLane> {
 
     private val adapter: AlbumAdapter by lazy { createAdapter() }
-    private val layoutManager: RecyclerView.LayoutManager by lazy { LinearLayoutManager(context, RecyclerView.HORIZONTAL, false) }
+    private val layoutManager: RecyclerView.LayoutManager by lazy {
+        LinearLayoutManager(
+            context,
+            RecyclerView.HORIZONTAL,
+            false
+        )
+    }
 
     private fun createAdapter(): AlbumAdapter =
         AlbumAdapter(onItemClicked = { album, position ->
             Toast.makeText(
                 context, "Album ${album.title} on position ${position + 1} was clicked", Toast.LENGTH_SHORT
             ).show()
-            findNavController().navigate(HomeFragmentDirections.actionFragmentItemAlbum())
+            findNavController().navigate(HomeFragmentDirections.actionFragmentItemAlbum(album.id))
         })
 
     override fun onFinishInflate() {

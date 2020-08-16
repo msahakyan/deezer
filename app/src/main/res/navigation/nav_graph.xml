@@ -4,35 +4,52 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
     app:startDestination="@id/bottomNavFragmentItemHome">
-    
+
     <fragment
         android:id="@+id/bottomNavFragmentItemHome"
         android:name="coders.android.msahakyan.deezer.ui.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" >
+        tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_fragmentItemAlbum"
-            app:destination="@id/bottomNavFragmentItemAlbum" />
+            app:destination="@id/fragmentAlbumDetail">
+            <argument
+                android:name="album_id"
+                app:argType="integer" />
+        </action>
     </fragment>
-    
+
     <fragment
         android:id="@+id/bottomNavFragmentItemAlbum"
         android:name="coders.android.msahakyan.deezer.AlbumFragment"
         android:label="fragment_album"
         tools:layout="@layout/fragment_album" />
-    
+
+    <fragment
+        android:id="@+id/fragmentAlbumDetail"
+        android:name="coders.android.msahakyan.deezer.AlbumDetailFragment"
+        android:label="fragment_album_detail"
+        tools:layout="@layout/fragment_album_detail">
+
+        <argument
+            android:name="album_id"
+            android:defaultValue="-1"
+            app:argType="integer" />
+
+    </fragment>
+
     <fragment
         android:id="@+id/bottomNavFragmentItemSearch"
         android:name="coders.android.msahakyan.deezer.SearchFragment"
         android:label="fragment_search"
         tools:layout="@layout/fragment_search" />
-    
+
     <fragment
         android:id="@+id/bottomNavFragmentItemTrack"
         android:name="coders.android.msahakyan.deezer.TrackFragment"
         android:label="fragment_track"
         tools:layout="@layout/fragment_track" />
-    
+
     <fragment
         android:id="@+id/bottomNavFragmentItemRadio"
         android:name="coders.android.msahakyan.deezer.RadioFragment"
